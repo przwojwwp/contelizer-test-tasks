@@ -1,0 +1,24 @@
+.header {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  width: 100dvw;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100dvw;
+  max-width: 1200px;
+}
+
+.pages {
+  display: flex;
+  list-style-type: none;
+}
+
+.page {
+  padding: 0 10px;
+}
