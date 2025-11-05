@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./ScrambleText.module.scss";
+import styles from "./ScrambleFileText.module.scss";
 
 export const ScrambleFileText = () => {
   const [originalFileText, setOriginalFileText] = useState("");
@@ -43,6 +43,7 @@ export const ScrambleFileText = () => {
 
   return (
     <div className={styles.container}>
+      <h1>Losowe przestawianie liter pliku po jego wgraniu</h1>
       <input type="file" accept=".txt" onChange={handleFileUpload} />
       {originalFileText && (
         <div className="text-container">
