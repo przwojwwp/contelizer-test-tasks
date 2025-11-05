@@ -7,6 +7,8 @@ body {
 
 .main {
   display: flex;
-  height: 200dvh;
-  margin-top: 88px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 56px;
+  min-height: calc(100dvh - 56px);
 }

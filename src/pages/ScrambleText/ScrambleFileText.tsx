@@ -42,17 +42,27 @@ export const ScrambleFileText = () => {
   };
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       <h1>Losowe przestawianie liter pliku po jego wgraniu</h1>
-      <input type="file" accept=".txt" onChange={handleFileUpload} />
+      <label htmlFor="file-upload" className={styles["upload-input-label"]}>
+        Wgraj plik tekstowy
+        <span className="button">Wybierz plik</span>
+        <input
+          id="file-upload"
+          type="file"
+          accept=".txt"
+          className={styles["file-input"]}
+          onChange={handleFileUpload}
+        />
+      </label>
       {originalFileText && (
-        <div className="text-container">
+        <>
           <h2>Oryginał:</h2>
           <textarea readOnly value={originalFileText}></textarea>
 
           <h2>Po przetworzeniu</h2>
           <textarea readOnly value={processedFileText}></textarea>
-        </div>
+        </>
       )}
     </div>
   );
