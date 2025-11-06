@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { validatePesel } from "../../utils/validatePesel";
+import "../../index.css";
 
 export const PeselValidator: React.FC = () => {
   const [pesel, setPesel] = useState("");
@@ -8,6 +9,7 @@ export const PeselValidator: React.FC = () => {
   );
 
   const onSubmit = (e: React.FormEvent) => {
+    console.log(typeof pesel);
     e.preventDefault();
     setResult(validatePesel(pesel));
   };
@@ -21,20 +23,38 @@ export const PeselValidator: React.FC = () => {
           <input
             value={pesel}
             onChange={(e) => setPesel(e.target.value)}
-            placeholder="Wpisz PESEL"
-            type="text"
+            placeholder="Wpisz 11-cyfrowy PESEL"
+            inputMode="numeric"
+            type="number"
           />
         </label>
-        <button type="submit">Sprawdź</button>
+        <button type="submit" className="button">
+          Sprawdź
+        </button>
       </form>
 
       {result && (
         <div>
-          <p>{result.valid ? "PESEL poprawny ✅" : `Błąd: ${result.reason}`}</p>
-          {result.birthDate && (
-            <p>Data urodzenia: {result.birthDate.toLocaleDateString()}</p>
+          <p>
+            {result.valid ? (
+              "PESEL jest poprawny ✅"
+            ) : (
+              <>
+                <strong>Błąd:</strong> {result.reason} ❌
+              </>
+            )}
+          </p>
+          {result.valid && result.birthDate && (
+            <p>
+              <strong>Data urodzenia:</strong>{" "}
+              {result.birthDate.toLocaleDateString()}
+            </p>
           )}
-          {result.gender && <p>Płeć: {result.gender}</p>}
+          {result.valid && result.gender && (
+            <p>
+              <strong>Płeć:</strong> {result.gender}
+            </p>
+          )}
         </div>
       )}
     </div>
