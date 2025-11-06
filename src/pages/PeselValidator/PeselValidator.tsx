@@ -3,11 +3,13 @@ import { validatePesel } from "../../utils/validatePesel";
 
 export const PeselValidator: React.FC = () => {
   const [pesel, setPesel] = useState("");
+  const [result, setResult] = useState<ReturnType<typeof validatePesel> | null>(
+    null
+  );
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const result = validatePesel(pesel);
-    console.log("Result:", result);
+    setResult(validatePesel(pesel));
   };
 
   return (
@@ -23,10 +25,18 @@ export const PeselValidator: React.FC = () => {
             type="text"
           />
         </label>
-        <button type="submit">
-          Sprawdź
-        </button>
+        <button type="submit">Sprawdź</button>
       </form>
+
+      {result && (
+        <div>
+          <p>{result.valid ? "PESEL poprawny ✅" : `Błąd: ${result.reason}`}</p>
+          {result.birthDate && (
+            <p>Data urodzenia: {result.birthDate.toLocaleDateString()}</p>
+          )}
+          {result.gender && <p>Płeć: {result.gender}</p>}
+        </div>
+      )}
     </div>
   );
 };
