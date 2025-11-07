@@ -61,8 +61,6 @@ export function validatePesel(pesel: string): PeselParseResult {
 
   const birthDate = new Date(Date.UTC(year, mm - 1, dd));
 
-  console.log(birthDate);
-
   if (birthDate > new Date()) {
     return {
       valid: false,
