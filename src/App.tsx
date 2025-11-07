@@ -1,15 +1,17 @@
 import "./App.scss";
 import { Header } from "./components/Header/Header";
-import { PeselValidator } from "./pages/PeselValidator/PeselValidator";
+// import { PeselValidator } from "./pages/PeselValidator/PeselValidator";
 // import { ScrambleFileText } from "./pages/ScrambleText/ScrambleFileText";
+import { UsersList } from "./pages/UsersList/UsersList";
 
 function App() {
   return (
     <>
       <Header />
       <main className="main">
-        <PeselValidator />
+        {/* <PeselValidator /> */}
         {/* <ScrambleFileText /> */}
+        <UsersList />
       </main>
     </>
   );
