@@ -2,7 +2,8 @@ import type { User } from "../types/UsersList";
 
 const API_URL = "https://gorest.co.in/public/v2";
 
-const ACCESS_TOKEN = "TWOJ_TOKEN_DOSTEPOWY";
+const ACCESS_TOKEN =
+  "851bb1a6db98567bc1182381e11abe29565a7c0307fefa03cc8180f33b1173e1";
 
 export const getUsers = async (): Promise<User[]> => {
   const response = await fetch(`${API_URL}/users`);
