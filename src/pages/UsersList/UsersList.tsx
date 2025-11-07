@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { getUsers } from "../../services/UsersListApi";
 import type { User } from "../../types/UsersList";
 import styles from "./UsersList.module.scss";
+import { UsersListItem } from "./components/UsersListItem/UsersListItem";
 
 export const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -60,25 +61,7 @@ export const UsersList: React.FC = () => {
         <ul className={styles.userList}>
           {filteredUsers.length > 0 ? (
             filteredUsers.map((user) => (
-              <li key={user.id} className={styles.item}>
-                <div className={styles.userInfo}>
-                  <strong className={styles.name}>{user.name}</strong>
-                  <span className={styles.email}>{user.email}</span>
-                </div>
-                <div className={styles.details}>
-                  <span>{user.gender}</span>
-                  <span
-                    className={`${styles.status} ${
-                      user.status === "active" ? styles.active : styles.inactive
-                    }`}
-                  >
-                    {user.status}
-                  </span>
-                </div>
-                <button onClick={() => handleEdit(user)} className="button">
-                  Edytuj
-                </button>
-              </li>
+              <UsersListItem key={user.id} user={user} onEdit={handleEdit} />
             ))
           ) : (
             <p>Nie znaleziono użytkowników pasujących do kryteriów.</p>
