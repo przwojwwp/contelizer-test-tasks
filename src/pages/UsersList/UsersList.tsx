@@ -3,13 +3,13 @@ import { getUsers } from "../../services/UsersListApi";
 import type { User } from "../../types/UsersList";
 import styles from "./UsersList.module.scss";
 import { UsersListItem } from "./components/UsersListItem/UsersListItem";
+import { EditUserModal } from "./components/EditUserModal/EditUserModal";
 
 export const UsersList: React.FC = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [editingUser, setEditingUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -39,7 +39,17 @@ export const UsersList: React.FC = () => {
 
   const handleEdit = (user: User) => {
     setEditingUser(user);
-    console.log(user);
+  };
+
+  const handleCloseModal = () => {
+    setEditingUser(null);
+  };
+
+  const handleSaveUser = (updatedUser: User) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) => (user.id === updatedUser.id ? updatedUser : user))
+    );
+    setEditingUser(null);
   };
 
   return (
@@ -67,6 +77,14 @@ export const UsersList: React.FC = () => {
             <p>Nie znaleziono użytkowników pasujących do kryteriów.</p>
           )}
         </ul>
+      )}
+
+      {editingUser && (
+        <EditUserModal
+          user={editingUser}
+          onClose={handleCloseModal}
+          onSave={handleSaveUser}
+        />
       )}
     </div>
   );
