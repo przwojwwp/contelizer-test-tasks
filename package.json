@@ -1,9 +1,9 @@
 {
-  "name": "contelizer-test-task",
+  "name": "contelizer-test-tasks",
   "private": false,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://przwojwwp.github.io/contelizer-test-task",
+  "homepage": "https://przwojwwp.github.io/contelizer-test-tasks",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
