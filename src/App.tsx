@@ -1,17 +1,25 @@
+import { useState } from "react";
 import "./App.scss";
 import { Header } from "./components/Header/Header";
-// import { PeselValidator } from "./pages/PeselValidator/PeselValidator";
-// import { ScrambleFileText } from "./pages/ScrambleText/ScrambleFileText";
+import { Home } from "./pages/Home/Home";
+import { PeselValidator } from "./pages/PeselValidator/PeselValidator";
+import { ScrambleFileText } from "./pages/ScrambleText/ScrambleFileText";
 import { UsersList } from "./pages/UsersList/UsersList";
+import type { VisibleExercise } from "./types/visibleExercise";
 
 function App() {
+  const [visibleExercise, setVisibleExercise] =
+    useState<VisibleExercise | null>(null);
+
   return (
     <>
-      <Header />
+      <Header setVisibleExercise={setVisibleExercise} />
       <main className="main">
-        {/* <PeselValidator /> */}
-        {/* <ScrambleFileText /> */}
-        <UsersList />
+        {visibleExercise === null && <Home />}
+
+        {visibleExercise === "Exercise-1" && <PeselValidator />}
+        {visibleExercise === "Exercise-2" && <ScrambleFileText />}
+        {visibleExercise === "Exercise-3" && <UsersList />}
       </main>
     </>
   );
