@@ -13,12 +13,12 @@ export const UsersListItem: React.FC<UsersListItemProps> = ({
 }) => {
   return (
     <li className={styles.item}>
-      <div className={styles.userInfo}>
+      <div className={styles["user-info"]}>
         <strong className={styles.name}>{user.name}</strong>
         <span className={styles.email}>{user.email}</span>
       </div>
       <div className={styles.details}>
-        <span>{user.gender}</span>
+        <span className={styles.gender}>{user.gender}</span>
         <span
           className={`${styles.status} ${
             user.status === "active" ? styles.active : styles.inactive
@@ -26,10 +26,10 @@ export const UsersListItem: React.FC<UsersListItemProps> = ({
         >
           {user.status}
         </span>
+        <button onClick={() => onEdit(user)} className="button">
+          Edytuj
+        </button>
       </div>
-      <button onClick={() => onEdit(user)} className="button">
-        Edytuj
-      </button>
     </li>
   );
 };

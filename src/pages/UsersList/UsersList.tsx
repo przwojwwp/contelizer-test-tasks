@@ -51,14 +51,14 @@ export const UsersList: React.FC = () => {
         placeholder="Szukaj po imieniu lub emailu..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        className={styles.searchInput}
+        className={styles["search-input"]}
       />
 
       {isLoading && <p>Ładowanie danych...</p>}
       {error && <p className={styles.error}>Błąd: {error}</p>}
 
       {!isLoading && !error && (
-        <ul className={styles.userList}>
+        <ul className={styles["user-list"]}>
           {filteredUsers.length > 0 ? (
             filteredUsers.map((user) => (
               <UsersListItem key={user.id} user={user} onEdit={handleEdit} />
