@@ -38,6 +38,10 @@
   &:focus {
     border-color: #646cff;
   }
+
+  &::placeholder {
+    text-align: center;
+  }
 }
 
 .input::-webkit-inner-spin-button,
