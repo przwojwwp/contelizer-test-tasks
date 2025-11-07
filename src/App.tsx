@@ -17,8 +17,8 @@ function App() {
       <main className="main">
         {visibleExercise === null && <Home />}
 
-        {visibleExercise === "Exercise-1" && <PeselValidator />}
-        {visibleExercise === "Exercise-2" && <ScrambleFileText />}
+        {visibleExercise === "Exercise-1" && <ScrambleFileText />}
+        {visibleExercise === "Exercise-2" && <PeselValidator />}
         {visibleExercise === "Exercise-3" && <UsersList />}
       </main>
     </>
