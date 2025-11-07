@@ -50,7 +50,7 @@ export const PeselValidator: React.FC = () => {
           {result.valid && result.birthDate && (
             <p>
               <strong>Data urodzenia:</strong>{" "}
-              {result.birthDate.toISOString().slice(0, 10)}
+              {result.birthDate.toLocaleDateString()}
             </p>
           )}
 
